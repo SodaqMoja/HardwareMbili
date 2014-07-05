@@ -4,40 +4,19 @@
 #include <avr/pgmspace.h>
 
 // ATMEL ATMEGA1284P
-//
-//                   +---\/---+
-//           (D 0) PB0  1|        |40  PA0 (AI 0 / D24)
-//           (D 1) PB1  2|        |39  PA1 (AI 1 / D25)
-//      INT2 (D 2) PB2  3|        |38  PA2 (AI 2 / D26)
-//       PWM (D 3) PB3  4|        |37  PA3 (AI 3 / D27)
-//    PWM/SS (D 4) PB4  5|        |36  PA4 (AI 4 / D28)
-//      MOSI (D 5) PB5  6|        |35  PA5 (AI 5 / D29)
-//  PWM/MISO (D 6) PB6  7|        |34  PA6 (AI 6 / D30)
-//   PWM/SCK (D 7) PB7  8|        |33  PA7 (AI 7 / D31)
-//                 RST  9|        |32  AREF
-//                 VCC 10|        |31  GND 
-//                 GND 11|        |30  AVCC
-//               XTAL2 12|        |29  PC7 (D 23)
-//               XTAL1 13|        |28  PC6 (D 22)
-//      RX0 (D 8)  PD0 14|        |27  PC5 (D 21) TDI
-//      TX0 (D 9)  PD1 15|        |26  PC4 (D 20) TDO
-// RX1/INT0 (D 10) PD2 16|        |25  PC3 (D 19) TMS
-// TX1/INT1 (D 11) PD3 17|        |24  PC2 (D 18) TCK
-//      PWM (D 12) PD4 18|        |23  PC1 (D 17) SDA
-//      PWM (D 13) PD5 19|        |22  PC0 (D 16) SCL
-//      PWM (D 14) PD6 20|        |21  PD7 (D 15) PWM
-//                   +--------+
+
 //
 
 /*
-   PCINT15-8: D7-0  : bit 1
+   PCINT15-8:  D7-0   : bit 1
    PCINT31-24: D15-8  : bit 3
    PCINT23-16: D23-16 : bit 2
-   PCINT7-0: D31-24   : bit 0
-   */
+   PCINT7-0:   D31-24 : bit 0
+*/
 
 #define NUM_DIGITAL_PINS            31
 #define NUM_ANALOG_INPUTS           8
+
 #define analogInputToDigitalPin(p)  ((p < NUM_ANALOG_INPUTS) ? (p) + 24 : -1)
 
 #define digitalPinHasPWM(p)         ((p) == 3 || (p) == 4 || (p) == 6 || (p) == 7 || (p) == 12 || (p) == 13 || (p) == 14 || (p) == 15)
@@ -104,15 +83,7 @@ const uint16_t PROGMEM port_to_input_PGM[] =
 
 const uint8_t PROGMEM digital_pin_to_port_PGM[] =
 {
-	PB, /* 0 */
-	PB,
-	PB,
-	PB,
-	PB,
-	PB,
-	PB,
-	PB,
-	PD, /* 8 */
+	PD, /* 0 */
 	PD,
 	PD,
 	PD,
@@ -120,6 +91,14 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] =
 	PD,
 	PD,
 	PD,
+	PB, /* 8 */
+	PB,
+	PB,
+	PB,
+	PB,
+	PB,
+	PB,
+	PB,
 	PC, /* 16 */
 	PC,
 	PC,
@@ -140,7 +119,7 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] =
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] =
 {
-	_BV(0), /* 0, port B */
+	_BV(0), /* 0, port D */
 	_BV(1),
 	_BV(2),
 	_BV(3),
@@ -148,7 +127,7 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] =
 	_BV(5),
 	_BV(6),
 	_BV(7),
-	_BV(0), /* 8, port D */
+	_BV(0), /* 8, port B */
 	_BV(1),
 	_BV(2),
 	_BV(3),
@@ -176,22 +155,22 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] =
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] =
 {
-	NOT_ON_TIMER, 	/* 0  - PB0 */
-	NOT_ON_TIMER, 	/* 1  - PB1 */
-	NOT_ON_TIMER, 	/* 2  - PB2 */
-	TIMER0A,     	/* 3  - PB3 */
-	TIMER0B, 	/* 4  - PB4 */
-	NOT_ON_TIMER, 	/* 5  - PB5 */
-	TIMER3A, 	/* 6  - PB6 */
-	TIMER3B,	/* 7  - PB7 */
-	NOT_ON_TIMER, 	/* 8  - PD0 */
-	NOT_ON_TIMER, 	/* 9  - PD1 */
-	NOT_ON_TIMER, 	/* 10 - PD2 */
-	NOT_ON_TIMER, 	/* 11 - PD3 */
-	TIMER1B,     	/* 12 - PD4 */
-	TIMER1A,     	/* 13 - PD5 */
-	TIMER2B,     	/* 14 - PD6 */
-	TIMER2A,     	/* 15 - PD7 */
+	NOT_ON_TIMER, 	/* 0  - PD0 */
+	NOT_ON_TIMER, 	/* 1  - PD1 */
+	NOT_ON_TIMER, 	/* 2  - PD2 */
+	NOT_ON_TIMER, 	/* 3  - PD3 */
+	TIMER1B,     	/* 4  - PD4 */
+	TIMER1A,     	/* 5  - PD5 */
+	TIMER2B,     	/* 6  - PD6 */
+	TIMER2A,     	/* 7  - PD7 */
+	NOT_ON_TIMER, 	/* 8  - PB0 */
+	NOT_ON_TIMER, 	/* 9  - PB1 */
+	NOT_ON_TIMER, 	/* 10 - PB2 */
+	TIMER0A,     	/* 11 - PB3 */
+	TIMER0B, 	/* 12 - PB4 */
+	NOT_ON_TIMER, 	/* 13 - PB5 */
+	TIMER3A, 	/* 14 - PB6 */
+	TIMER3B,	/* 15 - PB7 */
 	NOT_ON_TIMER, 	/* 16 - PC0 */
 	NOT_ON_TIMER,   /* 17 - PC1 */
 	NOT_ON_TIMER,   /* 18 - PC2 */

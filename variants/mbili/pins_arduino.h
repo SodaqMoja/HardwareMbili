@@ -81,8 +81,8 @@ static const uint8_t A7 = 31;
 */
 
 #define digitalPinToPCICR(p)    (((p) >= 0 && (p) < NUM_DIGITAL_PINS) ? (&PCICR) : ((uint8_t *)0))
-#define digitalPinToPCICRbit(p) (((p) <= 7) ? 3 : (((p) <= 15) ? 1 : (((p) <= 23) ? 2 : 0)))
-#define digitalPinToPCMSK(p)    (((p) <= 7) ? (&PCMSK2) : (((p) <= 15) ? (&PCMSK1) : (((p) <= 23) ? (&PCMSK2) : (&PCMSK0))))
+#define digitalPinToPCICRbit(p) (((p) <= 7) ? 3         : (((p) <= 15) ? 1         : (((p) <= 23) ? 2         : 0)))
+#define digitalPinToPCMSK(p)    (((p) <= 7) ? (&PCMSK3) : (((p) <= 15) ? (&PCMSK1) : (((p) <= 23) ? (&PCMSK2) : (&PCMSK0))))
 #define digitalPinToPCMSKbit(p) ((p) % 8)
 
 #ifdef ARDUINO_MAIN

@@ -8,9 +8,7 @@ inherites most of the features that made SODAQ Moja a success.
 
 ## Current state
 
-Everything is there and has been initially tested.  It should work
-fine.  There is more detailed testing which must be completed before
-calling it completely 'done' though.  But that's how things work :-)
+Everything is there and has been tested.  It should work fine.
 
 The platform is based on the optiboot bootloader.  Notice that we are
 using our own version of optiboot. See https://github.com/SodaqMoja/optiboot.git
@@ -23,11 +21,13 @@ using our own version of optiboot. See https://github.com/SodaqMoja/optiboot.git
    The ZIP file already unpacks in a subdirectory called 'sodaq-mbili'.
 3. Restart the IDE !
 4. Select Tools > Board > SODAQ Mbili
-5. To burn the bootloader, follow the Arduino [Bootloader](http://arduino.cc/en/Hacking/Bootloader) instructions.
+5. To burn the bootloader, follow the Arduino
+[Bootloader](http://arduino.cc/en/Hacking/Bootloader) instructions.
 
 ## Requirements
 
-* Works only on Arduino >= 1.0.5
+* Works only on Arduino >= 1.5.x (tested with 1.5.8)
+* There is a GIT branch arduno-1.0.x with the files for Arduino 1.0.x
 
 ## Supported Boards
 

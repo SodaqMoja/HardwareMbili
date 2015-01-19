@@ -37,7 +37,7 @@
  * PD0..PD7, PB0..PB7, PC0..PC7, PA0..PA7
  */
 
-#define NUM_DIGITAL_PINS            31
+#define NUM_DIGITAL_PINS            32
 #define NUM_ANALOG_INPUTS           8
 
 #define analogInputToDigitalPin(p)  ((p < NUM_ANALOG_INPUTS) ? (p) + 24 : -1)

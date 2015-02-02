@@ -61,8 +61,8 @@ static const uint8_t BEEDTR = 23;
 static const uint8_t BEERTS = 9;
 static const uint8_t BEECTS = 8;
 
-static const uint8_t LED2 = 8;
-static const uint8_t LED3 = 9;
+static const uint8_t LED2 = 8;                  // Green
+static const uint8_t LED1 = 9;                  // Red
 
 static const uint8_t A0 = 24;
 static const uint8_t A1 = 25;
